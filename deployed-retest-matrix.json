@@ -1,0 +1,18 @@
+{
+  "state": "PENDING",
+  "browser": "Google Chrome",
+  "sizes": [[360,800],[390,844],[768,1024],[1024,768],[1280,800],[1440,900]],
+  "frontend": "https://planar-truck-361704.uc.r.appspot.com",
+  "api": "https://cicdevapi.uc.r.appspot.com",
+  "deployment": null,
+  "rules": ["No mocked story-critical requests", "UI action and rendered screenshot at every size", "Persisted state survives reload", "Inspect screenshots before Fixed", "Negative actions must not mutate fixture; complete AIR positive control needs disposable isolated fixture per viewport"],
+  "role": "KYC Approver",
+  "scenarios": [
+    {"finding":"KYCA-F001","source":"KYCA-004 / KYCA-006 / KYCA-016 / KYCA-019","setup":"Active synthetic individual with valid authorized passport PDF.","steps":["Open individual","Select Preview Passport and Verify identity information","Open protected document","Inspect readable PDF content and authorized fallback","Capture sanitized rendered evidence"],"status":"PENDING","evidence":[]},
+    {"finding":"KYCA-F002","source":"KYCA-026","setup":"Incomplete AIR missing documents, registration name/RC number/board consent/validation; separate complete disposable positive-control AIR.","steps":["Open incomplete AIR","Enter valid reviewer comment","Confirm Mark as Verified / Completed remains disabled with specific completeness feedback","Reload and confirm AIR unchanged","Open complete positive control and verify through UI","Reload and confirm Completed persists"],"status":"PENDING","evidence":[]},
+    {"finding":"KYCA-F003","source":"KYCA-017","setup":"In Progress disposable individual; whitespace rejection leaves fixture unchanged.","steps":["Open Return to reviewer","Enter spaces only and submit","Confirm useful inline rejection","Confirm status unchanged after reload","Cancel without altering application"],"status":"PENDING","evidence":[]},
+    {"finding":"KYCA-F004","source":"KYCA-007 / KYCA-020","setup":"Completed approved synthetic individual.","steps":["Open Completed approved record","Verify Accept/Query/Reject/verification/Save comment are absent or disabled","Confirm authorized evidence remains readable","Reload and verify immutable status"],"status":"PENDING","evidence":[]},
+    {"finding":"KYCA-F005","source":"KYCA-002 / KYCA-014","setup":"Individual Pending queue with real populated record.","steps":["Open Pending individual queue","Confirm Review action visible without hidden horizontal navigation","Activate Review and confirm matching detail","Capture queue and detail"],"status":"PENDING","evidence":[]},
+    {"finding":"KYCA-F006","source":"KYCA-014 / KYCA-025","setup":"Populated real AIR queue.","steps":["Open AIR queue","Confirm View action visible without hidden horizontal navigation","Activate View and confirm matching AIR detail","Capture queue and detail"],"status":"PENDING","evidence":[]}
+  ]
+}

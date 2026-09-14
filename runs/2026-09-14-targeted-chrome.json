@@ -1,0 +1,524 @@
+{
+  "runId": "2026-09-14-targeted-chrome",
+  "state": "COMPLETED — targeted partial-scope retest; original campaign not closed",
+  "updatedAt": "2026-09-14T04:54:48Z",
+  "scope": "User-approved 90-minute risk-based retest of affected critical/high findings. Functional journey execution is separate from responsive inspection.",
+  "frontend": "https://planar-truck-361704.uc.r.appspot.com",
+  "api": "https://cicdevapi.uc.r.appspot.com",
+  "browser": "Google Chrome",
+  "deployments": {
+    "webapp": {
+      "commit": "5061ed8dcb1b62fcba7e8bd411681426b2a52fb9",
+      "version": "auth-34793703967-1"
+    },
+    "webapi": {
+      "commit": "42dd14b8d7bb897b69759d974e0bc23023013057",
+      "version": "policy-34792703930-1"
+    },
+    "notificationservice": {
+      "commit": "515196429af878b68d3d0e2f483f25776a2b073f",
+      "version": "20260914t002754"
+    }
+  },
+  "findings": [
+    {
+      "id": "KYCA-F001",
+      "title": "Required passport PDF is black and unreadable at all six Chrome sizes",
+      "scenario": "KYCA-004 / KYCA-006 / KYCA-016 / KYCA-019",
+      "status": "PARTIAL",
+      "summary": "The authorized HTTPS Open document fallback rendered the controlled private test-only passport PDF legibly. Inline viewer and six-size document coverage are not yet complete.",
+      "steps": [
+        "Open the controlled completed Pitcher approval record.",
+        "Provide the audit reason for passport access.",
+        "Use Open document to open its authorized HTTPS fallback.",
+        "Visually inspect the readable test-only document content."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCA-F001-authorized-fallback.png",
+          "label": "Readable authorized fallback for synthetic test-only passport"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "390×844",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "768×1024",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1024×768",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1280×800",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1440×900",
+          "status": "NOT RUN",
+          "evidence": []
+        }
+      ],
+      "limitations": "Positive fallback path proven only. Inline viewing and full six-size readability are not yet verified. No signed document URLs are published."
+    },
+    {
+      "id": "KYCA-F002",
+      "title": "Incomplete AIR can be marked verified",
+      "scenario": "KYCA-026",
+      "status": "PARTIAL",
+      "summary": "The incomplete AIR could not be marked verified even with a valid reviewer comment. The UI lists missing document, registered company name, RC number and automatic validation prerequisites.",
+      "steps": [
+        "Open the controlled AIR with no documents, registration name or RC number and automatic validation NOT_RUN.",
+        "Enter a valid explanatory reviewer comment.",
+        "Verify Mark As Verified / Completed remains disabled and all four missing requirements are explained.",
+        "Inspect the guard at all six calibrated Chrome sizes.",
+        "Clear the unsaved comment and close; observe the record remains Open."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-1440x900.png",
+          "label": "1440×900 Chrome incomplete AIR verification guard"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-360x800.png",
+              "label": "360×800 Chrome incomplete AIR verification guard"
+            }
+          ],
+          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
+        },
+        {
+          "size": "390×844",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-390x844.png",
+              "label": "390×844 Chrome incomplete AIR verification guard"
+            }
+          ],
+          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
+        },
+        {
+          "size": "768×1024",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-768x1024.png",
+              "label": "768×1024 Chrome incomplete AIR verification guard"
+            }
+          ],
+          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
+        },
+        {
+          "size": "1024×768",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-1024x768.png",
+              "label": "1024×768 Chrome incomplete AIR verification guard"
+            }
+          ],
+          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-1280x800.png",
+              "label": "1280×800 Chrome incomplete AIR verification guard"
+            }
+          ],
+          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-1440x900.png",
+              "label": "1440×900 Chrome incomplete AIR verification guard"
+            }
+          ],
+          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
+        }
+      ],
+      "limitations": "The negative incomplete-evidence guard passed. Positive complete AIR verification and reload persistence are not yet verified; the original finding is not fully closed."
+    },
+    {
+      "id": "KYCA-F003",
+      "title": "Whitespace-only return reason is accepted",
+      "scenario": "KYCA-017",
+      "status": "PASS",
+      "summary": "A Return submission containing three spaces was rejected with a useful required-reason message; cancel and reload preserved the original record state and queue counts.",
+      "steps": [
+        "Open the controlled pending individual approval record.",
+        "Open Return and enter exactly three spaces.",
+        "Submit; observe “Enter a reason for returning this application to the reviewer.”",
+        "Inspect the validation dialog at all six exact Chrome viewports.",
+        "Cancel and reload; confirm Pending 3, Queried 2 and Completed 12 remain unchanged."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCA-F003-whitespace-1440x900.png",
+          "label": "1440×900 calibrated Chrome Return validation dialog"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F003-whitespace-360x800.png",
+              "label": "360×800 calibrated Chrome Return validation dialog"
+            }
+          ],
+          "summary": "Validation text and dialog actions readable and contained; visually inspected."
+        },
+        {
+          "size": "390×844",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F003-whitespace-390x844.png",
+              "label": "390×844 calibrated Chrome Return validation dialog"
+            }
+          ],
+          "summary": "Validation text and dialog actions readable and contained; visually inspected."
+        },
+        {
+          "size": "768×1024",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F003-whitespace-768x1024.png",
+              "label": "768×1024 calibrated Chrome Return validation dialog"
+            }
+          ],
+          "summary": "Validation text and dialog actions readable and contained; visually inspected."
+        },
+        {
+          "size": "1024×768",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F003-whitespace-1024x768.png",
+              "label": "1024×768 calibrated Chrome Return validation dialog"
+            }
+          ],
+          "summary": "Validation text and dialog actions readable and contained; visually inspected."
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F003-whitespace-1280x800.png",
+              "label": "1280×800 calibrated Chrome Return validation dialog"
+            }
+          ],
+          "summary": "Validation text and dialog actions readable and contained; visually inspected."
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F003-whitespace-1440x900.png",
+              "label": "1440×900 calibrated Chrome Return validation dialog"
+            }
+          ],
+          "summary": "Validation text and dialog actions readable and contained; visually inspected."
+        }
+      ],
+      "limitations": "Targeted whitespace-negative path passed. A valid positive return was not executed. At 1024 pixels, underlying document columns wrapped severely; the tested modal remained readable and contained. This visual risk is outside the targeted dialog finding."
+    },
+    {
+      "id": "KYCA-F004",
+      "title": "Completed approved records expose mutation controls",
+      "scenario": "KYCA-007 / KYCA-020",
+      "status": "PASS",
+      "summary": "The completed record remained read-only after reload and reopening the same approved applicant. Approve and Return controls were absent; Passport acceptance and bio-comment saving were effectively disabled. Pressing Space on the phone checkbox caused no observed change or verification mutation.",
+      "steps": [
+        "Open the controlled completed Pitcher approval record.",
+        "Inspect the read-only notice and effective disabled state of Passport acceptance and bio-comment Save.",
+        "Press Space on the apparently enabled phone checkbox; observe no checked-state change or verification mutation.",
+        "Inspect the terminal record at all six calibrated Chrome sizes.",
+        "Reload, select Completed (12), reopen the same approved applicant, and verify the read-only notice persists with no Approve or Return controls."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCA-F004-terminal-1440x900.png",
+          "label": "Completed record read-only state"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F004-terminal-360x800.png",
+              "label": "360×800 terminal state"
+            }
+          ],
+          "summary": "Read-only notice visible; terminal state visually inspected."
+        },
+        {
+          "size": "390×844",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F004-terminal-390x844.png",
+              "label": "390×844 terminal state"
+            }
+          ],
+          "summary": "Read-only notice visible; terminal state visually inspected."
+        },
+        {
+          "size": "768×1024",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F004-terminal-768x1024.png",
+              "label": "768×1024 terminal state"
+            }
+          ],
+          "summary": "Read-only notice visible; terminal state visually inspected."
+        },
+        {
+          "size": "1024×768",
+          "status": "FAIL",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F004-terminal-1024x768.png",
+              "label": "1024×768 terminal state"
+            }
+          ],
+          "summary": "Read-only notice visibility passed, but detail document columns clip; broader responsive usability failed."
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F004-terminal-1280x800.png",
+              "label": "1280×800 terminal state"
+            }
+          ],
+          "summary": "Read-only notice visible; terminal state visually inspected."
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F004-terminal-1440x900.png",
+              "label": "1440×900 terminal state"
+            }
+          ],
+          "summary": "Read-only notice visible; terminal state visually inspected."
+        }
+      ],
+      "limitations": "Targeted terminal immutability passed. Six-size checks cover the read-only notice and terminal action state, not complete page usability. Document columns clip at 1024 pixels; that broader responsive UX issue remains explicitly unresolved. Raw disabled attributes alone were not treated as effective control state."
+    },
+    {
+      "id": "KYCA-F005",
+      "title": "Individual Review action is off-screen on mobile",
+      "scenario": "KYCA-002 / KYCA-014",
+      "status": "PASS",
+      "summary": "The primary Individual Review action was reachable at all six exact Chrome sizes and opened the matching controlled legacy India applicant detail.",
+      "steps": [
+        "Open the individual approval queue.",
+        "Inspect the primary Review action at each calibrated Chrome viewport.",
+        "Activate Review and confirm the matching controlled legacy India applicant detail opens."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCA-F005-queue-1440x900.png",
+          "label": "1440×900 calibrated Chrome approval queue"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F005-queue-360x800.png",
+              "label": "360×800 calibrated Chrome approval queue"
+            }
+          ],
+          "summary": "Primary Review action visible and operable; visually inspected."
+        },
+        {
+          "size": "390×844",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F005-queue-390x844.png",
+              "label": "390×844 calibrated Chrome approval queue"
+            }
+          ],
+          "summary": "Primary Review action visible and operable; visually inspected."
+        },
+        {
+          "size": "768×1024",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F005-queue-768x1024.png",
+              "label": "768×1024 calibrated Chrome approval queue"
+            }
+          ],
+          "summary": "Primary Review action visible and operable; visually inspected."
+        },
+        {
+          "size": "1024×768",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F005-queue-1024x768.png",
+              "label": "1024×768 calibrated Chrome approval queue"
+            }
+          ],
+          "summary": "Primary Review action visible and operable; visually inspected."
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F005-queue-1280x800.png",
+              "label": "1280×800 calibrated Chrome approval queue"
+            }
+          ],
+          "summary": "Primary Review action visible and operable; visually inspected."
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F005-queue-1440x900.png",
+              "label": "1440×900 calibrated Chrome approval queue"
+            }
+          ],
+          "summary": "Primary Review action visible and operable; visually inspected."
+        }
+      ],
+      "limitations": "Record-opening functional journey executed once; responsive reachability inspected at six sizes, not six independent complete approval journeys."
+    },
+    {
+      "id": "KYCA-F006",
+      "title": "AIR View action is off-screen through 1024 pixels",
+      "scenario": "KYCA-014 / KYCA-025",
+      "status": "PASS",
+      "summary": "AIR search located the controlled test pitch; its primary View action opened matching AIR detail and remained visible at all six exact Chrome sizes.",
+      "steps": [
+        "Search the AIR queue for the controlled test pitch.",
+        "Inspect the primary View action at all six calibrated Chrome sizes after vertical focus.",
+        "Open the matching Open-status row and confirm the AIR detail matches the selected pitch."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCA-F006-air-queue-1440x900.png",
+          "label": "1440×900 Chrome AIR queue View action"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F006-air-queue-360x800.png",
+              "label": "360×800 Chrome AIR queue View action"
+            }
+          ],
+          "summary": "Primary View action remains fully within viewport; visually inspected."
+        },
+        {
+          "size": "390×844",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F006-air-queue-390x844.png",
+              "label": "390×844 Chrome AIR queue View action"
+            }
+          ],
+          "summary": "Primary View action remains fully within viewport; visually inspected."
+        },
+        {
+          "size": "768×1024",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F006-air-queue-768x1024.png",
+              "label": "768×1024 Chrome AIR queue View action"
+            }
+          ],
+          "summary": "Primary View action remains fully within viewport; visually inspected."
+        },
+        {
+          "size": "1024×768",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F006-air-queue-1024x768.png",
+              "label": "1024×768 Chrome AIR queue View action"
+            }
+          ],
+          "summary": "Primary View action remains fully within viewport; visually inspected."
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F006-air-queue-1280x800.png",
+              "label": "1280×800 Chrome AIR queue View action"
+            }
+          ],
+          "summary": "Primary View action remains fully within viewport; visually inspected."
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCA-F006-air-queue-1440x900.png",
+              "label": "1440×900 Chrome AIR queue View action"
+            }
+          ],
+          "summary": "Primary View action remains fully within viewport; visually inspected."
+        }
+      ],
+      "limitations": "One functional navigation journey with six responsive action checks. Other table columns require horizontal scrolling at narrow widths; full table usability is not claimed."
+    }
+  ],
+  "startedAt": "2026-09-14T04:05:58Z",
+  "timeboxMinutes": 90,
+  "coverageContract": "Targeted risk-based defect retest: one functional journey per affected behavior, reused real records for responsive control/display checks. Not six independent complete journey executions; historical campaign scores unchanged.",
+  "completedAt": "2026-09-14T04:54:48Z",
+  "testingEndedAt": "2026-09-14T04:54:00Z",
+  "publicationNote": "Completed refers to this user-approved targeted run, not closure of every defect or the historical full campaign. Unfinished acceptance remains explicitly PARTIAL, BLOCKED or NOT RUN."
+}
