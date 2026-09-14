@@ -1,8 +1,8 @@
 {
-  "runId": "2026-09-14-targeted-chrome",
-  "state": "COMPLETED — targeted partial-scope retest; original campaign not closed",
-  "updatedAt": "2026-09-14T04:54:48Z",
-  "scope": "User-approved 90-minute risk-based retest of affected critical/high findings. Functional journey execution is separate from responsive inspection.",
+  "runId": "2026-09-14-retest45",
+  "state": "RETEST PARTIAL — all 45 dispositioned; incomplete workflows explicitly blocked or partial",
+  "updatedAt": "2026-09-14T07:08:29.535Z",
+  "scope": "Chrome-only targeted retest of the 45 originally unclosed critical/high defects. Dispositioned does not mean fully executed: blocked, partial and unexecuted viewport checks remain explicit. Historical campaign findings remain unchanged. Targeted PASS does not assert broader unexecuted lifecycle coverage.",
   "frontend": "https://planar-truck-361704.uc.r.appspot.com",
   "api": "https://cicdevapi.uc.r.appspot.com",
   "browser": "Google Chrome",
@@ -21,147 +21,6 @@
     }
   },
   "findings": [
-    {
-      "id": "KYCA-F001",
-      "title": "Required passport PDF is black and unreadable at all six Chrome sizes",
-      "scenario": "KYCA-004 / KYCA-006 / KYCA-016 / KYCA-019",
-      "status": "PARTIAL",
-      "summary": "The authorized HTTPS Open document fallback rendered the controlled private test-only passport PDF legibly. Inline viewer and six-size document coverage are not yet complete.",
-      "steps": [
-        "Open the controlled completed Pitcher approval record.",
-        "Provide the audit reason for passport access.",
-        "Use Open document to open its authorized HTTPS fallback.",
-        "Visually inspect the readable test-only document content."
-      ],
-      "evidence": [
-        {
-          "url": "assets/targeted-20260914/KYCA-F001-authorized-fallback.png",
-          "label": "Readable authorized fallback for synthetic test-only passport"
-        }
-      ],
-      "responsive": [
-        {
-          "size": "360×800",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "390×844",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "768×1024",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "1024×768",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "1280×800",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "1440×900",
-          "status": "NOT RUN",
-          "evidence": []
-        }
-      ],
-      "limitations": "Positive fallback path proven only. Inline viewing and full six-size readability are not yet verified. No signed document URLs are published."
-    },
-    {
-      "id": "KYCA-F002",
-      "title": "Incomplete AIR can be marked verified",
-      "scenario": "KYCA-026",
-      "status": "PARTIAL",
-      "summary": "The incomplete AIR could not be marked verified even with a valid reviewer comment. The UI lists missing document, registered company name, RC number and automatic validation prerequisites.",
-      "steps": [
-        "Open the controlled AIR with no documents, registration name or RC number and automatic validation NOT_RUN.",
-        "Enter a valid explanatory reviewer comment.",
-        "Verify Mark As Verified / Completed remains disabled and all four missing requirements are explained.",
-        "Inspect the guard at all six calibrated Chrome sizes.",
-        "Clear the unsaved comment and close; observe the record remains Open."
-      ],
-      "evidence": [
-        {
-          "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-1440x900.png",
-          "label": "1440×900 Chrome incomplete AIR verification guard"
-        }
-      ],
-      "responsive": [
-        {
-          "size": "360×800",
-          "status": "PASS",
-          "evidence": [
-            {
-              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-360x800.png",
-              "label": "360×800 Chrome incomplete AIR verification guard"
-            }
-          ],
-          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
-        },
-        {
-          "size": "390×844",
-          "status": "PASS",
-          "evidence": [
-            {
-              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-390x844.png",
-              "label": "390×844 Chrome incomplete AIR verification guard"
-            }
-          ],
-          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
-        },
-        {
-          "size": "768×1024",
-          "status": "PASS",
-          "evidence": [
-            {
-              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-768x1024.png",
-              "label": "768×1024 Chrome incomplete AIR verification guard"
-            }
-          ],
-          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
-        },
-        {
-          "size": "1024×768",
-          "status": "PASS",
-          "evidence": [
-            {
-              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-1024x768.png",
-              "label": "1024×768 Chrome incomplete AIR verification guard"
-            }
-          ],
-          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
-        },
-        {
-          "size": "1280×800",
-          "status": "PASS",
-          "evidence": [
-            {
-              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-1280x800.png",
-              "label": "1280×800 Chrome incomplete AIR verification guard"
-            }
-          ],
-          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
-        },
-        {
-          "size": "1440×900",
-          "status": "PASS",
-          "evidence": [
-            {
-              "url": "assets/targeted-20260914/KYCA-F002-incomplete-air-1440x900.png",
-              "label": "1440×900 Chrome incomplete AIR verification guard"
-            }
-          ],
-          "summary": "Four missing requirements, comment, disabled verification and Close readable and contained; visually inspected."
-        }
-      ],
-      "limitations": "The negative incomplete-evidence guard passed. Positive complete AIR verification and reload persistence are not yet verified; the original finding is not fully closed."
-    },
     {
       "id": "KYCA-F003",
       "title": "Whitespace-only return reason is accepted",
@@ -513,6 +372,118 @@
         }
       ],
       "limitations": "One functional navigation journey with six responsive action checks. Other table columns require horizontal scrolling at narrow widths; full table usability is not claimed."
+    },
+    {
+      "id": "KYCA-F001",
+      "title": "Required passport PDF is black and unreadable at all six Chrome sizes",
+      "status": "PARTIAL",
+      "summary": "The controlled test-only passport PDF now renders text inline at all six sizes, rather than black. The 1024 pane clips horizontal text, and full fallback verification is blocked by the installed PDF extension URL policy.",
+      "steps": [
+        "Signed out Reviewer and signed in normally as Approver.",
+        "Opened owned completed Pitcher record, preserving read-only state.",
+        "Opened Passport with audited Compare submitted evidence reason.",
+        "Captured and visually reviewed six calibrated screenshots; readable synthetic content is present."
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PASS",
+          "summary": "Synthetic PDF content rendered inline and was visually inspected; no black viewer.",
+          "evidence": []
+        },
+        {
+          "size": "390×844",
+          "status": "PASS",
+          "summary": "Synthetic PDF content rendered inline and was visually inspected; no black viewer.",
+          "evidence": []
+        },
+        {
+          "size": "768×1024",
+          "status": "PASS",
+          "summary": "Synthetic PDF content rendered inline and was visually inspected; no black viewer.",
+          "evidence": []
+        },
+        {
+          "size": "1024×768",
+          "status": "PARTIAL",
+          "summary": "PDF renders, but horizontal text clips in narrow right pane; full-content reading was not established.",
+          "evidence": []
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "summary": "Synthetic PDF content rendered inline and was visually inspected; no black viewer.",
+          "evidence": []
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "summary": "Synthetic PDF content rendered inline and was visually inspected; no black viewer.",
+          "evidence": []
+        }
+      ],
+      "evidence": [],
+      "evidencePublication": "WITHHELD_PRIVACY_REVIEW",
+      "limitations": "Scope is inline PDF rendering. Full fallback/zoom/scroll readability not proven because installed PDF extension control is safety-policy blocked. No identity decision changed. Evidence withheld pending explicit public-asset review. Private document captures, signed links and local paths are never copied automatically.",
+      "sourceRun": "2026-09-14-retest45",
+      "resultSource": "kyc-results.json"
+    },
+    {
+      "id": "KYCA-F002",
+      "title": "Incomplete AIR can be marked verified",
+      "status": "PASS",
+      "summary": "Targeted incomplete-AIR guard passed at all six sizes: with a valid reviewer comment, Mark as Verified / Completed remained disabled and explained all missing requirements. Reload retained the same Open incomplete record.",
+      "steps": [
+        "Opened controlled incomplete Automated Business Structure AIR.",
+        "Confirmed no documents, no registration name, no RC number and automatic validation NOT_RUN.",
+        "Entered valid explanatory test comment; verification remained disabled.",
+        "Inspected warning and controls at each of six exact viewport sizes.",
+        "Cleared unsaved comment, closed, reloaded, returned to AIR and confirmed same incomplete record remains Open.",
+        "Inspected prior six synthetic Authority-to-Act positives: already Closed, with prior audit and board-resolution document; not treated as fresh positive execution."
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PASS",
+          "summary": "Valid comment cannot bypass missing documents, company name, RC number or automatic validation. Warning and disabled verification control visually inspected.",
+          "evidence": []
+        },
+        {
+          "size": "390×844",
+          "status": "PASS",
+          "summary": "Valid comment cannot bypass missing documents, company name, RC number or automatic validation. Warning and disabled verification control visually inspected.",
+          "evidence": []
+        },
+        {
+          "size": "768×1024",
+          "status": "PASS",
+          "summary": "Valid comment cannot bypass missing documents, company name, RC number or automatic validation. Warning and disabled verification control visually inspected.",
+          "evidence": []
+        },
+        {
+          "size": "1024×768",
+          "status": "PASS",
+          "summary": "Valid comment cannot bypass missing documents, company name, RC number or automatic validation. Warning and disabled verification control visually inspected.",
+          "evidence": []
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "summary": "Valid comment cannot bypass missing documents, company name, RC number or automatic validation. Warning and disabled verification control visually inspected.",
+          "evidence": []
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "summary": "Valid comment cannot bypass missing documents, company name, RC number or automatic validation. Warning and disabled verification control visually inspected.",
+          "evidence": []
+        }
+      ],
+      "evidence": [],
+      "evidencePublication": "WITHHELD_PRIVACY_REVIEW",
+      "limitations": "PASS is targeted regression of the reported incomplete-verification defect only. Fresh complete-AIR positive transition is not executed: existing six controlled positive fixtures are terminal Closed and no reopen is offered. Full AIR lifecycle acceptance remains outside this targeted pass. Evidence withheld pending explicit public-asset review. Private document captures, signed links and local paths are never copied automatically.",
+      "sourceRun": "2026-09-14-retest45",
+      "resultSource": "kyc-results.json"
     }
   ],
   "startedAt": "2026-09-14T04:05:58Z",
